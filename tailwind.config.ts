@@ -57,7 +57,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "var(--font-pixel)"],
+        sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
       },
     },
