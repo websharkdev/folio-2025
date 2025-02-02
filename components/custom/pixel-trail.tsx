@@ -23,6 +23,7 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
   pixelClassName,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const dimensions = useDimensions(containerRef as any);
   const trailId = useRef(uuidv4());
 
@@ -38,6 +39,7 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
         `${trailId.current}-pixel-${x}-${y}`
       );
       if (pixelElement) {
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         const animatePixel = (pixelElement as any).__animatePixel;
         if (animatePixel) animatePixel();
       }
@@ -104,6 +106,7 @@ const PixelDot: React.FC<PixelDotProps> = React.memo(
     const ref = useCallback(
       (node: HTMLDivElement | null) => {
         if (node) {
+          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           (node as any).__animatePixel = animatePixel;
         }
       },

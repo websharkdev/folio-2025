@@ -9,7 +9,10 @@ export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
   text: string;
 }
 
-export const TextReveal: FC<TextRevealProps> = ({ text, className }) => {
+export const TextReveal: FC<TextRevealProps> = ({
+  text = "",
+  className = "",
+}) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -30,15 +33,17 @@ export const TextReveal: FC<TextRevealProps> = ({ text, className }) => {
             "flex flex-wrap p-5 text-xl font-sans !leading-relaxed font-medium text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10"
           }
         >
-          {words.map((word, i) => {
-            const start = i / words.length;
-            const end = start + 1 / words.length;
-            return (
-              <Word key={i} progress={scrollYProgress} range={[start, end]}>
-                {word}
-              </Word>
-            );
-          })}
+          {words
+            .filter((item) => item && item.trim() !== "")
+            .map((word, i) => {
+              const start = i / words.length;
+              const end = start + 1 / words.length;
+              return (
+                <Word key={i} progress={scrollYProgress} range={[start, end]}>
+                  {word}
+                </Word>
+              );
+            })}
         </p>
       </div>
     </div>

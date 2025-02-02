@@ -1,7 +1,6 @@
 import { Magnetic } from "@/components/custom/magnetic";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 const recent = [
   {
@@ -40,6 +39,7 @@ const recent = [
   },
   {
     company: "Freelance",
+    type: "Freelance",
     range: "1.1 year.",
     description:
       "I worked at Kronis as a Senior Front-end Developer, tasked with rebuilding the project on a new stack (NextJS). My focus was on speed, design, cost reduction, and user experience. I improved loading time from 4–6 seconds to 1.2, made the dashboard cleaner and more intuitive, and optimized server requests to cut costs.",

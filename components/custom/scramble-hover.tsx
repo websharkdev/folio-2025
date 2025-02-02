@@ -18,7 +18,7 @@ interface ScrambleHoverProps {
 }
 
 const ScrambleHover: React.FC<ScrambleHoverProps> = ({
-  text,
+  text = "",
   scrambleSpeed = 50,
   maxIterations = 10,
   useOriginalCharsOnly = false,
@@ -32,7 +32,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
-  const [revealedIndices, setRevealedIndices] = useState(new Set<number>());
+  const [revealedIndices] = useState(new Set<number>());
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -72,14 +72,18 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
 
     const shuffleText = (text: string) => {
       if (useOriginalCharsOnly) {
-        const positions = text.split("").map((char, i) => ({
-          char,
-          isSpace: char === " ",
-          index: i,
-          isRevealed: revealedIndices.has(i),
-        }));
+        const positions = text
+          .split("")
+          .filter((item) => item && item.trim() !== "")
+          .map((char, i) => ({
+            char,
+            isSpace: char === " ",
+            index: i,
+            isRevealed: revealedIndices.has(i),
+          }));
 
         const nonSpaceChars = positions
+          .filter((item) => item && item.char.trim() !== "")
           .filter((p) => !p.isSpace && !p.isRevealed)
           .map((p) => p.char);
 
@@ -94,6 +98,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
 
         let charIndex = 0;
         return positions
+          .filter((item) => item && item.char.trim() !== "")
           .map((p) => {
             if (p.isSpace) return " ";
             if (p.isRevealed) return text[p.index];
@@ -103,6 +108,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
       } else {
         return text
           .split("")
+          .filter((item) => item && item.trim() !== "")
           .map((char, i) => {
             if (char === " ") return " ";
             if (revealedIndices.has(i)) return text[i];
@@ -168,18 +174,21 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     >
       <span className="sr-only">{displayText}</span>
       <span aria-hidden="true">
-        {displayText.split("").map((char, index) => (
-          <span
-            key={index}
-            className={cn(
-              revealedIndices.has(index) || !isScrambling || !isHovering
-                ? className
-                : scrambledClassName
-            )}
-          >
-            {char}
-          </span>
-        ))}
+        {displayText
+          .split("")
+          .filter((item) => item && item.trim() !== "")
+          .map((char, index) => (
+            <span
+              key={index}
+              className={cn(
+                revealedIndices.has(index) || !isScrambling || !isHovering
+                  ? className
+                  : scrambledClassName
+              )}
+            >
+              {char}
+            </span>
+          ))}
       </span>
     </motion.span>
   );
