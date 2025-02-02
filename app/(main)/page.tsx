@@ -1,4 +1,7 @@
+import { defaultMetadata } from "@/lib/сonfig";
 import { MAbout, MConnect, MHome, MWorks } from "./(components)";
+
+export const metadata = defaultMetadata;
 
 const Page = () => {
   return (
