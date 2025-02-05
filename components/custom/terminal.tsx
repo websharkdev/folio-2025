@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, MotionProps } from "framer-motion";
+import { motion, MotionProps, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface AnimatedSpanProps extends MotionProps {
@@ -54,13 +54,16 @@ export const TypingAnimation = ({
   const [displayedText, setDisplayedText] = useState<string>("");
   const [started, setStarted] = useState(false);
   const elementRef = useRef<HTMLElement | null>(null);
+  const isInView = useInView(elementRef);
 
   useEffect(() => {
-    const startTimeout = setTimeout(() => {
-      setStarted(true);
-    }, delay);
-    return () => clearTimeout(startTimeout);
-  }, [delay]);
+    if (isInView) {
+      const startTimeout = setTimeout(() => {
+        setStarted(true);
+      }, delay);
+      return () => clearTimeout(startTimeout);
+    }
+  }, [delay, isInView]);
 
   useEffect(() => {
     if (!started) return;

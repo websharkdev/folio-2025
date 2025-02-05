@@ -1,5 +1,5 @@
 import { defaultMetadata } from "@/lib/сonfig";
-import { MAbout, MConnect, MHome, MWorks } from "./(components)";
+import { MAbout, MConnect, MHome, MInfo, MWorks } from "./(components)";
 
 export const metadata = defaultMetadata;
 
@@ -9,6 +9,7 @@ const Page = () => {
       <MHome />
       <MAbout />
       <MWorks />
+      <MInfo />
       <MConnect />
     </div>
   );
