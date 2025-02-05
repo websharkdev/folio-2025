@@ -66,7 +66,7 @@ const MInfo = () => {
           Success!
         </TypingAnimation>
       </Terminal>
-      <div className="col-span-2 h-max border border-input rounded p-4S">
+      <div className="col-span-2 h-max border border-input rounded-lg p-3.5">
         <div className="flex items-end gap-4">
           <Image
             src="/oleksii-bortnytskyi.jpg"
@@ -74,7 +74,7 @@ const MInfo = () => {
             height={128}
             priority
             alt="oleksii-bortnytskyi--image"
-            className="rounded-md"
+            className="rounded-xl"
           />
           <div className="flex flex-col gap-7">
             <div className="grid grid-cols-1 gap-1">
