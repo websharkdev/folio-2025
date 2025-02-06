@@ -1,91 +1,174 @@
+import { GooeyFilter } from "@/components/custom/gooey-filter";
+import { Magnetic } from "@/components/custom/magnetic";
+import { PixelTrail } from "@/components/custom/pixel-trail";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/custom/terminal";
 import { Button } from "@/components/ui/button";
-import { Info, TriangleAlert } from "lucide-react";
+import { Check, Info, Loader, User } from "lucide-react";
 import Image from "next/image";
 
+const terminal = [
+  {
+    icon: Info,
+    color: "text-blue-600",
+    text: "Found 6 years experience at Frontend",
+  },
+  {
+    icon: Check,
+    color: "text-green-500",
+    text: "Verifying framework - Found React & NextJS.",
+  },
+  {
+    icon: Check,
+    color: "text-green-500",
+    text: "Validating TypeScript.",
+  },
+  {
+    icon: Check,
+    color: "text-green-500",
+    text: "Validating ThreeJS.",
+  },
+  {
+    icon: Info,
+    color: "text-blue-600",
+    text: "Found 1 year experience at Backend.",
+  },
+  {
+    icon: Check,
+    color: "text-green-500",
+    text: "Validating NodeJS",
+  },
+  {
+    icon: Check,
+    color: "text-green-500",
+    text: "Verifying framework - Found Hono.js",
+  },
+  {
+    icon: Loader,
+    id: "loader",
+    color: "text-yellow-600",
+    text: "Verifying - Nest.js in progress to learn",
+  },
+  {
+    icon: Info,
+    color: "text-blue-600",
+    text: "Verifying - Solidity in progress to learn",
+  },
+  {
+    icon: Check,
+    color: "text-green-500",
+    text: "Installing dependencies.",
+  },
+];
+
 const MInfo = () => {
+  const springOptions = { bounce: 0.1 };
+
   return (
-    <div className="container mx-auto py-10 min-h-dvh grid grid-cols-5 gap-2.5">
-      <Terminal className="col-span-3 w-full max-w-full">
-        <TypingAnimation>&gt; bun add cool-developer</TypingAnimation>
+    <div className="container mx-auto py-10 min-h-dvh flex items-center">
+      <div className="grid grid-cols-5 gap-2.5 w-full">
+        <Terminal className="col-span-3 w-full max-w-full">
+          <TypingAnimation>&gt; bun add cool-developer</TypingAnimation>
 
-        <AnimatedSpan delay={1500} className="text-green-500">
-          <span>✔ {`6 years expirience at Frontend`}.</span>
-        </AnimatedSpan>
+          {terminal.map((commands, index) => (
+            <AnimatedSpan
+              key={`main-info--commands-${index}`}
+              delay={1500 + 500 * (index + 1)}
+              className={commands.color}
+            >
+              <div className="flex items-center flex-nowrap gap-2.5">
+                <commands.icon
+                  size={12}
+                  className={commands.id === "loader" ? "animate-spin" : ""}
+                />
+                <span>{commands.text}</span>
+              </div>
+            </AnimatedSpan>
+          ))}
 
-        <AnimatedSpan delay={2000} className="text-green-500">
-          <span>✔ Verifying framework. Found Next.js & React.</span>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={2500} className="text-green-500">
-          <span>✔ Validating TypeScript.</span>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={3000} className="text-green-500">
-          <span>✔ Validating Backend expirience.</span>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={3500} className="text-green-500">
-          <span>✔ Verifying NodeJS</span>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={4000} className="text-green-500">
-          <span>✔ Verifying framework - Found Hono.js</span>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={4500} className="text-yellow-600">
-          <div className="flex items-center flex-nowrap gap-2.5">
-            <TriangleAlert size={12} />
-            <span>Verifying Nest.js in progress to learn</span>
-          </div>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={4500} className="text-blue-600">
-          <div className="flex items-center flex-nowrap gap-2.5">
-            <Info size={12} />
-            <span>Verifying Solidity in progress to learn</span>
-          </div>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={5500} className="text-green-500">
-          <span>✔ Installing dependencies.</span>
-        </AnimatedSpan>
-
-        <AnimatedSpan delay={6000} className="text-blue-600">
-          <div className="flex items-center flex-nowrap gap-2.5">
-            <Info size={12} /> <span>Updated 1 employee:</span>
-          </div>
-          <span className="pl-2">+ Oleksii Bortnytskyi.ts</span>
-        </AnimatedSpan>
-
-        <TypingAnimation delay={6500} className="text-muted-foreground">
-          Success!
-        </TypingAnimation>
-      </Terminal>
-      <div className="col-span-2 h-max border border-input rounded-lg p-3.5">
-        <div className="flex items-end gap-4">
-          <Image
-            src="/oleksii-bortnytskyi.jpg"
-            width={128}
-            height={128}
-            priority
-            alt="oleksii-bortnytskyi--image"
-            className="rounded-xl"
-          />
-          <div className="flex flex-col gap-7">
-            <div className="grid grid-cols-1 gap-1">
-              <h6 className="text-2xl font-medium text-pretty font-sans">
-                Oleksii Bortnytksyi
-              </h6>
-              <span className="text-xs font-sans text-pretty text-gray-600">
-                {`@Fullstack developer`}
-              </span>
+          <AnimatedSpan delay={6000} className="text-blue-600">
+            <div className="flex items-center flex-nowrap gap-2.5">
+              <Info size={12} /> <span>Updated 1 employee:</span>
             </div>
-            <Button className="font-sans">{`<Contact me/>`}</Button>
+            <span className="pl-2">+ Oleksii Bortnytskyi.ts</span>
+          </AnimatedSpan>
+
+          <TypingAnimation delay={6500} className="text-muted-foreground">
+            Success!
+          </TypingAnimation>
+        </Terminal>
+        <div className="col-span-2 h-max min-h-[400px] flex items-end border border-input rounded-lg p-3.5">
+          <div className="flex items-end gap-4">
+            <div className="group relative">
+              <div className="relative w-full max-w-4xl h-64 flex flex-col items-center justify-center gap-8 rounded-xl overflow-hidden text-center text-pretty">
+                <Image
+                  src="/oleksii-bortnytskyi.jpg"
+                  width={256}
+                  height={256}
+                  priority
+                  alt="oleksii-bortnytskyi--image"
+                  className="rounded-xl cursor-pointer grayscale"
+                />
+
+                <GooeyFilter id="gooey-filter-pixel-info" strength={5} />
+
+                <div
+                  className="absolute inset-0 z-0"
+                  style={{ filter: "url(#gooey-filter-pixel-info)" }}
+                >
+                  <PixelTrail
+                    pixelSize={18}
+                    fadeDuration={0}
+                    delay={500}
+                    pixelClassName="bg-white"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-7">
+              <div className="grid grid-cols-1 gap-1">
+                <h6 className="text-2xl font-medium text-pretty font-sans">
+                  Oleksii Bortnytksyi
+                </h6>
+                <span className="text-xs font-sans text-pretty text-gray-600">
+                  {`@Fullstack developer`}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Magnetic
+                  intensity={0.2}
+                  springOptions={springOptions}
+                  actionArea="global"
+                  range={200}
+                >
+                  <Button
+                    href="https://www.linkedin.com/in/bortnytskyi-oleksii/"
+                    size="sm"
+                    className="font-sans"
+                  >
+                    <Magnetic
+                      intensity={0.1}
+                      springOptions={springOptions}
+                      actionArea="global"
+                      range={200}
+                    >
+                      <span>{`<Contact me />`}</span>
+                    </Magnetic>
+                  </Button>
+                </Magnetic>
+                <Button
+                  size="icon"
+                  href="https://o-bortnytskyi.notion.site/FullStack-Engineer-18f2e9365c7e8052ad0bd5ebf1c44bf4?pvs=4"
+                  variant="outline"
+                  className="size-8"
+                >
+                  <User size={12} />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
