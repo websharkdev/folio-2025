@@ -63,7 +63,7 @@ const MWorks = () => {
     <div className="container mx-auto flex flex-col gap-10 h-max">
       <h6 className="text-6xl">Work Experience.</h6>
 
-      <div className="h-screen grid grid-cols-1 max-w-6xl mx-auto gap-5">
+      <div className="h-max grid grid-cols-1 max-w-6xl mx-auto gap-5">
         {recent.map((item, index) => (
           <div
             key={`working-expirience--${index}`}
