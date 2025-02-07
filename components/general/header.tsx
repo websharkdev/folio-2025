@@ -5,7 +5,7 @@ export const Header = () => {
   const springOptions = { bounce: 0.1 };
 
   return (
-    <header className="container sticky top-2 z-20 mx-auto bg-white bg-opacity-40 backdrop-blur-xl bg-blend-multiply border border-input w-full h-14 p-3.5 rounded-md flex justify-between items-center">
+    <header className="container sticky top-2 z-20 mx-auto bg-white bg-opacity-40 backdrop-blur-xl bg-blend-multiply border border-input w-[calc(100%_-_32px)] h-14 p-3.5 rounded-md flex justify-between items-center">
       <span className="text-sm font-medium font-mono">Bortnytskyi.</span>
 
       <Magnetic
