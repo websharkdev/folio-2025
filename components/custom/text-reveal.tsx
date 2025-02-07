@@ -30,7 +30,7 @@ export const TextReveal: FC<TextRevealProps> = ({
         <p
           ref={targetRef}
           className={
-            "flex flex-wrap p-5 text-xl font-sans !leading-relaxed font-medium text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10"
+            "flex flex-wrap p-5 text-lg sm:text-xl font-sans !leading-relaxed font-medium text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10"
           }
         >
           {words

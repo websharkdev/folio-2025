@@ -1,6 +1,5 @@
 import { GooeyFilter } from "@/components/custom/gooey-filter";
 import { Magnetic } from "@/components/custom/magnetic";
-import { Marquee } from "@/components/custom/marquee";
 import { PixelTrail } from "@/components/custom/pixel-trail";
 import {
   AnimatedSpan,
@@ -60,16 +59,18 @@ const MInfo = () => {
   const springOptions = { bounce: 0.1 };
 
   return (
-    <div className="container mx-auto py-10 h-max min-h-dvh flex items-center">
-      <div className="grid grid-cols-5 gap-2.5 w-full">
-        <Terminal className="col-span-full md:col-span-3 w-full max-w-full">
-          <TypingAnimation>&gt; bun add cool-developer</TypingAnimation>
+    <div className="container px-4 mx-auto py-10 h-max min-h-dvh flex items-center">
+      <div className="grid grid-cols-6 gap-2.5 w-full">
+        <Terminal className="col-span-full lg:col-span-3 w-full max-w-full">
+          <TypingAnimation className="text-xs sm:text-sm">
+            &gt; bun add cool-developer
+          </TypingAnimation>
 
           {terminal.map((commands, index) => (
             <AnimatedSpan
               key={`main-info--commands-${index}`}
               delay={1500 + 500 * (index + 1)}
-              className={"text-gray-500"}
+              className={"text-gray-500 text-xs sm:text-sm"}
             >
               <div className="flex items-center flex-nowrap gap-2.5">
                 <commands.icon
@@ -83,7 +84,7 @@ const MInfo = () => {
 
           <AnimatedSpan
             delay={1500 + 500 * (terminal.length + 1)}
-            className="text-blue-600"
+            className="text-blue-600 text-xs sm:text-sm"
           >
             <div className="flex items-center flex-nowrap gap-2.5">
               <Info size={12} /> <span>Updated 1 employee:</span>
@@ -95,7 +96,7 @@ const MInfo = () => {
             Success!
           </TypingAnimation>
         </Terminal>
-        <div className="col-span-full md:col-span-2 h-max min-h-[400px] flex flex-col justify-between border border-input rounded-xl">
+        <div className="col-span-full lg:col-span-3 h-max min-h-[400px] flex flex-col justify-between border border-input rounded-xl">
           <div className="flex justify-end gap-y-2 border-b border-border p-4">
             <div className="flex flex-row gap-x-2">
               <div className="h-2 w-2 rounded-full bg-red-500"></div>
@@ -103,7 +104,7 @@ const MInfo = () => {
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
           </div>
-          <div className="flex items-end gap-4 p-3.5">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-4 p-3.5">
             <div className="group relative">
               <div className="relative w-full max-w-4xl h-64 flex flex-col items-center justify-center gap-8 rounded-xl overflow-hidden text-center text-pretty">
                 <Image

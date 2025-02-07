@@ -60,8 +60,10 @@ const MWorks = () => {
   const springOptions = { bounce: 0.1 };
 
   return (
-    <div className="container mx-auto flex flex-col gap-10 h-max">
-      <h6 className="text-6xl">Work Experience.</h6>
+    <div className="container px-4 mx-auto flex flex-col gap-10 h-max">
+      <h6 className="font-sans text-black text-3xl leading-none md:text-4xl lg:text-6xl 2xl:text-8xl">
+        Work Experience.
+      </h6>
 
       <div className="h-max grid grid-cols-1 max-w-6xl mx-auto gap-5">
         {recent.map((item, index) => (
@@ -69,7 +71,7 @@ const MWorks = () => {
             key={`working-expirience--${index}`}
             className="w-full h-max rounded-lg bg-slate-50/50 hover:bg-slate-50 grid grid-cols-10 gap-2 px-5 py-3.5 border border-slate-50/50 hover:border-input transition-all duration-500"
           >
-            <div className="col-span-3 grid grid-cols-1">
+            <div className="col-span-full lg:col-span-3 grid grid-cols-1">
               <span className="text-lg font-sans font-semibold">
                 {item.company}
               </span>
@@ -77,10 +79,10 @@ const MWorks = () => {
                 {item.range}
               </span>
             </div>
-            <p className="col-span-7 text-sm font-sans font-medium leading-relaxed">
+            <p className="col-span-full lg:col-span-7 text-sm font-sans font-medium leading-relaxed">
               {item.description}
             </p>
-            <div className="col-span-3 flex-wrap flex gap-1 items-center">
+            <div className="col-span-full lg:col-span-3 flex-wrap flex gap-1 items-center">
               {item.stack.map((stack, stackID) => (
                 <span
                   key={`working-exp--${index}-${stackID}`}

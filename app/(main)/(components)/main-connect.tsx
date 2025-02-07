@@ -4,19 +4,16 @@ import { GooeyFilter } from "@/components/custom/gooey-filter";
 import { Magnetic } from "@/components/custom/magnetic";
 import { PixelTrail } from "@/components/custom/pixel-trail";
 import { Button } from "@/components/ui/button";
-import { useScreenSize } from "@/hook/use-screen-size";
 import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 const MConnect = () => {
-  const screenSize = useScreenSize();
   const springOptions = { bounce: 0.1 };
 
   return (
     <div className="container flex justify-center items-center mx-auto h-max flex-col">
       <div className="flex">
-        <div className="relative w-full max-w-4xl h-[990px] flex flex-col items-center justify-center gap-8 rounded-xl overflow-hidden text-center text-pretty">
+        <div className="relative w-full max-w-4xl flex flex-col items-center justify-center gap-8 rounded-xl overflow-hidden text-center text-pretty">
           <Image
             src="/vangoghmuseum.png"
             alt="impressionist painting"
